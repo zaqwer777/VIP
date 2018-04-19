@@ -33,7 +33,7 @@
         firebase.auth().onAuthStateChanged(firebaseUser => {
           var username = firebaseUser.email.split('@')[0];
           if (firebaseUser) {
-            firebase.database().ref('users/' + username + '/signedin').set('True');
+            //firebase.database().ref('users/' + username + '/signedin').set('True');
             window.location = username;
           } else {
             console.log("No user logged in.");
@@ -68,7 +68,7 @@
       <p>Confirm Password</p>
 			<input id="confirm_pass" type="password" placeholder="••••••••" size=20>
       <input id="signup" type="submit" value="Confirm Sign-Up" onclick="create_user(); load_home();"/>
-      <a href="index.html">Return to Log-In</a>
+      <a href="login">Return to Log-In</a>
 		</div>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
   </body>

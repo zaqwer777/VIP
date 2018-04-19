@@ -1,6 +1,5 @@
 <!doctype html>
 <html>
-<h1>
   <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='annotorious/annotorious.css') }}"/>
@@ -19,23 +18,42 @@
     </script>
     <script>
       function signout() {
-        var username = firebase.auth().currentUser.email.split('@')[0];
-        console.log(username);
-        //firebase.database().ref('users/' + username + '/signedin').set('False');
         firebase.auth().signOut();
-        console.log(firebase.auth().currentUser);
         window.location = 'login';
       }
     </script>
     <script type="text/javascript" src="{{ url_for('static', filename='annotorious/annotorious.min.js') }}"></script>
   </head>
-  <body onload="handle_data();">
-    <h1>Hello {{ user }}</h1>
-    <h3>Test Vals: {{ test }}</h3>
-    <img src="{{ url_for('static', filename='images/dog-park.jpg') }}" class=annotatable width=600/>
-    <input id="store_annos" type="button" value="Submit" onclick="store_annotations();"/>
-    <input id="sign_out" type="button" value="Sign Out" onclick="signout();"/>
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-  </body>
-</h1>
+  {% if user == 'admin' %}
+    <body onload="populate({{ populated_annos }});">
+      <h1>Hello {{ user }}</h1>
+      <img src="{{ url_for('static', filename='images/flood.jpg') }}" class=annotatable width=600/>
+      <img src="{{ url_for('static', filename='images/elephant.jpg') }}" class=annotatable width=600/>
+      <img src="{{ url_for('static', filename='images/mask.jpg') }}" class=annotatable width=600/>
+      <input id="sign_out" type="button" value="Sign Out" onclick="signout();"/>
+      <form action="/{{ user }}" method="post">
+        <button action="/{{ user }}" method="post" type="submit" value="Update Annotations"/>Update Annotations</button>
+      </form>
+      <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    </body>
+  {% else %}
+    <body onload="handle_data();">
+      <h1>Hello {{ user }}</h1>
+      <h4>Bias: {{ bias }}</h4>
+      <h4>Points: {{ points }}</h4>
+      {% if user == 'user1' %}
+        <img src="{{ url_for('static', filename='images/flood.jpg') }}" class=annotatable width=600/>
+      {% elif user == 'user2' %}
+        <img src="{{ url_for('static', filename='images/elephant.jpg') }}" class=annotatable width=600/>
+      {% elif user == 'user3' %}
+        <img src="{{ url_for('static', filename='images/mask.jpg') }}" class=annotatable width=600/>
+      {% endif %}
+      <input name="store_annos" type="button" value="Submit" onclick="store_annotations();"/><br><br>
+      <input id="sign_out" type="button" value="Sign Out" onclick="signout();"/>
+      <form action="/{{ user }}" method="post">
+        <button action="/{{ user }}" method="post" type="submit" value="Update Modules"/>Update Modules</button>
+      </form>
+      <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    </body>
+  {% endif %}
 </html>

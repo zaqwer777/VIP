@@ -14,7 +14,31 @@ function store_annotations() {
   }
 }
 
+var mA = {
+  src : 'http://127.0.0.1:5000/static/images/dog-park.jpg',
+  text : 'My annotation',
+  shapes : [{
+      type : 'rect',
+      geometry : { x : 0.1, y: 0.1, width : 0.4, height: 0.3 }
+  }]
+}
+
+function populate(populated_annos) {
+  for (var i = 0; i < populated_annos.length; i++) {
+    var myAnno = {
+      src : populated_annos[i].src,
+      text : populated_annos[i].text,
+      shapes : [{
+        type : populated_annos[i].shapes[0].type,
+        geometry : populated_annos[i].shapes[0].geometry
+      }]
+    }
+    anno.addAnnotation(myAnno);
+  }
+}
+
 function handle_data() {
+  //anno.addAnnotation(myAnnotation)
   anno.addHandler('onAnnotationCreated', function(annotation) {
     var geometry = annotation.shapes[0].geometry;
     console.log(annotation);
