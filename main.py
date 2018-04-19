@@ -11,6 +11,10 @@ firebase = pyrebase.initialize_app(config)
 
 app = Flask(__name__)
 
+@app.route('/')
+def mainpage():
+    return render_template('login.html')
+
 @app.route('/login')
 def login():
     return render_template('login.html')
