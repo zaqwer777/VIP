@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyC6ce12c32OpCI7-u5ueRbfYhsw_fBnkwk",
+        authDomain: "vip-ipcrowd.firebaseapp.com",
+        databaseURL: "https://vip-ipcrowd.firebaseio.com",
+        projectId: "vip-ipcrowd",
+        storageBucket: "vip-ipcrowd.appspot.com",
+        messagingSenderId: "80658497046"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script>
+      function load_home() {
+        var email = document.getElementById("email").value;
+        var pass = document.getElementById("pass").value;
+        firebase.auth().signInWithEmailAndPassword(email, pass).catch(function(error) {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          if (errorCode === 'auth/wrong-password') {
+            alert('Wrong password.');
+          } else {
+            alert(errorMessage);
+          }
+          console.log(error);
+        });
+
+        firebase.auth().onAuthStateChanged(firebaseUser => {
+          console.log(username);
+          if (firebaseUser) {
+            var username = firebaseUser.email.split('@')[0];
+            //firebase.database().ref('users/' + username + '/signedin').set("True");
+            window.location = username;
+          } else {
+            console.log("No user logged in.");
+          }
+        });
+      }
+      function redirect_signin() {
+        window.location = 'signup';
+      }
+    </script>
+  </head>
+  <body class="index">
+    <div class="loginBox">
+			<img src="{{ url_for('static', filename='images/user.png') }}" class="user">
+			<h2>IP Crowd</h2>
+			<p>Email</p>
+			<input id="email" type="text" placeholder="username" size=20>
+			<p>Password</p>
+			<input id="pass" type="password" placeholder="••••••••" size=20>
+			<input id="login" type="submit" value="Log In" onclick="load_home();"/>
+      <input id="sign-up" type="submit" value="Sign Up" onclick="redirect_signin();"/>
+			<a href="#">Forget Password</a>
+		</div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>

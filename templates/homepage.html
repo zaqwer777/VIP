@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<h1>
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='annotorious/annotorious.css') }}"/>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyC6ce12c32OpCI7-u5ueRbfYhsw_fBnkwk",
+        authDomain: "vip-ipcrowd.firebaseapp.com",
+        databaseURL: "https://vip-ipcrowd.firebaseio.com",
+        projectId: "vip-ipcrowd",
+        storageBucket: "vip-ipcrowd.appspot.com",
+        messagingSenderId: "80658497046"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script>
+      function signout() {
+        var username = firebase.auth().currentUser.email.split('@')[0];
+        console.log(username);
+        //firebase.database().ref('users/' + username + '/signedin').set('False');
+        firebase.auth().signOut();
+        console.log(firebase.auth().currentUser);
+        window.location = 'login';
+      }
+    </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='annotorious/annotorious.min.js') }}"></script>
+  </head>
+  <body onload="handle_data();">
+    <h1>Hello {{ user }}</h1>
+    <h3>Test Vals: {{ test }}</h3>
+    <img src="{{ url_for('static', filename='images/dog-park.jpg') }}" class=annotatable width=600/>
+    <input id="store_annos" type="button" value="Submit" onclick="store_annotations();"/>
+    <input id="sign_out" type="button" value="Sign Out" onclick="signout();"/>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</h1>
+</html>
