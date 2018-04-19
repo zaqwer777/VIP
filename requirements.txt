@@ -37,7 +37,6 @@ Flask-Cors==3.0.3
 gcloud==0.17.0
 gevent==1.2.2
 glob2==0.6
-gmpy2==2.0.8
 googleapis-common-protos==1.5.3
 greenlet==0.4.12
 gunicorn==19.7.1
