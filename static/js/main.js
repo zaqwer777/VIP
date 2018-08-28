@@ -24,6 +24,7 @@ var mA = {
 }
 
 function populate(populated_annos) {
+  console.log(populated_annos)
   for (var i = 0; i < populated_annos.length; i++) {
     var myAnno = {
       src : populated_annos[i].src,

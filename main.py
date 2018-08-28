@@ -33,11 +33,13 @@ def homepage(user=None):
     populated_annos = []
     users = firebase.database().child("users").get()
     for u in users.val():
+        print(u)
         if str(u) == user:
             for anno in users.val()[u]:
                 input_annotations.append(users.val()[u][anno]['text'])
         else:
             for anno in users.val()[u]:
+                print(anno)
                 populated_annos.append(users.val()[u][anno])
     bias = csm.updateCurrentAnnotations(input_annotations)
     points = len(input_annotations)

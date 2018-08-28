@@ -25,15 +25,16 @@
     <script type="text/javascript" src="{{ url_for('static', filename='annotorious/annotorious.min.js') }}"></script>
   </head>
   {% if user == 'admin' %}
-    <body onload="populate({{ populated_annos }});">
+    <body>
       <h1>Hello {{ user }}</h1>
       <img src="{{ url_for('static', filename='images/flood.jpg') }}" class=annotatable width=600/>
       <img src="{{ url_for('static', filename='images/elephant.jpg') }}" class=annotatable width=600/>
-      <img src="{{ url_for('static', filename='images/mask.jpg') }}" class=annotatable width=600/>
-      <input id="sign_out" type="button" value="Sign Out" onclick="signout();"/>
+      <img src="{{ url_for('static', filename='images/mask.jpg') }}" class=annotatable width=600/><br><br>
       <form action="/{{ user }}" method="post">
         <button action="/{{ user }}" method="post" type="submit" value="Update Annotations"/>Update Annotations</button>
       </form>
+      <input name="show_all_annos" type="button" value="Show All Annotations" onclick="populate({{ populated_annos }});"/><br><br>
+      <input id="sign_out" type="button" value="Sign Out" onclick="signout();"/>
       <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     </body>
   {% else %}

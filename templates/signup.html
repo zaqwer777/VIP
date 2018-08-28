@@ -33,7 +33,6 @@
         firebase.auth().onAuthStateChanged(firebaseUser => {
           var username = firebaseUser.email.split('@')[0];
           if (firebaseUser) {
-            //firebase.database().ref('users/' + username + '/signedin').set('True');
             window.location = username;
           } else {
             console.log("No user logged in.");
