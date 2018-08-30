@@ -27,7 +27,6 @@ Here are installation/set-up instructions for Mac OS X and other UNIX-based oper
    ```
    cd ~/
    pip install virtualenv
-   virtualenv vip-venv
    ```
    
 ### Github
@@ -45,7 +44,7 @@ Create an account on [Heroku](https://heroku.com), and ask Carl to be added to t
 ### Firebase
 Create an account on [Firebase](https://firebase.google.com/), and ask Carl to be added to the project as a collaborator.
 
-### Other configs
+### Setup Local Development
 In order to start developing, the virtual environment needs all necessary dependencies installed, so that your local machine can compile and run the web-app on your localhost.
 1. Activate your virtual environment
    ```
@@ -55,6 +54,7 @@ In order to start developing, the virtual environment needs all necessary depend
 2. Navigate into your VIP folder and install the specified packages
    ```
    cd ~/VIP
+   virtualenv vip-venv
    pip install -r VIP/requirements.txt
    ```
 ## Tutorials
@@ -77,7 +77,16 @@ Once you've decided on the feature/change to develop -
    ```
    git checkout -b branch-name
    ```
-3. Develop the feature and test it on your local machine. You can look at your changes by running Flask on terminal.
+3. Activate the virtual environment in order to prepare for development.
+   ```
+   cd ~/
+   source ./vip-venv/bin/activate
+   ```
+   Sometimes you might need to update the packages in your virtual environment in order to reflect code changes in git. If this is the case, install packages from the requirements file again
+   ```
+   pip install -r VIP/requirements.txt
+   ```
+4. Develop the feature and test it on your local machine. You can look at your changes by navigating to the project folder and running Flask on terminal.
    ```
    cd ~/VIP
    python main.py
@@ -86,16 +95,20 @@ Once you've decided on the feature/change to develop -
    ```
    Running on http://127.0.0.1:5000/
    ```
-4. Once you're ready to put your changes up on git, commit your changes to the branch.
+5. Once you're ready to put your changes up on git, commit your changes to the branch.
    ```
    git commit -a -m "i just added a new feature"
    ```
-5. Merge the branch back to master.
+6. Merge the branch back to master.
    ```
    git checkout master
    git merge branch-name
    ```
-6. Build and deploy the application on heroku so that your changes reflect on the version available by URL.
+7. Remember to deactivate your virtual environment so that you restrict its usage (and the packages you will install on your computer) to the scope of this project. Simply type
+   ```
+   deactivate
+   ```
+8. Build and deploy the application on heroku so that your changes reflect on the version available by URL.
 
 ## Software Architecture
 I've already briefly described the architecture before, but we use Flask as the web framework and most of the front-end development is still in basic js/HTML/CSS. Most back-end and modular development will occur in python since it offers many packages for image and data analysis. Here's an image of how the modules interact with each other:
