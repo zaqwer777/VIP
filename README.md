@@ -49,12 +49,12 @@ In order to start developing, the virtual environment needs all necessary depend
 1. Activate your virtual environment
    ```
    cd ~/
+   virtualenv vip-venv
    source ./vip-venv/bin/activate
    ```
 2. Navigate into your VIP folder and install the specified packages
    ```
    cd ~/VIP
-   virtualenv vip-venv
    pip install -r VIP/requirements.txt
    ```
 ## Tutorials
