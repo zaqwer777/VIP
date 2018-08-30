@@ -77,16 +77,25 @@ Once you've decided on the feature/change to develop -
    ```
    git checkout -b branch-name
    ```
-3. Develop the feature and test it. Once you're done, commit your changes to the branch.
+3. Develop the feature and test it on your local machine. You can look at your changes by running Flask on terminal.
+   ```
+   cd ~/VIP
+   python main.py
+   ```
+   Copy the localhost URL from the bash output and paste it on your browser to see changes. The bash output will look something like this:
+   ```
+   Running on http://127.0.0.1:5000/
+   ```
+4. Once you're ready to put your changes up on git, commit your changes to the branch.
    ```
    git commit -a -m "i just added a new feature"
    ```
-4. Merge the branch back to master.
+5. Merge the branch back to master.
    ```
    git checkout master
    git merge branch-name
    ```
-5. Build and deploy the application on heroku so that your changes reflect on the version available by URL.
+6. Build and deploy the application on heroku so that your changes reflect on the version available by URL.
 
 ## Software Architecture
 I've already briefly described the architecture before, but we use Flask as the web framework and most of the front-end development is still in basic js/HTML/CSS. Most back-end and modular development will occur in python since it offers many packages for image and data analysis. Here's an image of how the modules interact with each other:
