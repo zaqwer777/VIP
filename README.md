@@ -118,7 +118,7 @@ I've already briefly described the architecture before, but we use Flask as the 
 
 Here's how the cloud and database interfaces with the web-application. 
 
-<img src="https://puu.sh/Bn1B8/fd50ac0fd3.png" width="400">
+<img src="https://puu.sh/Bn1Zu/1755501795.png" width="400">
 
 ## Explanation of Code
 Here's an explanation of how the code works (or at least how it works in its current state) - 
