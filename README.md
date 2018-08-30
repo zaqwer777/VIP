@@ -46,7 +46,7 @@ Create an account on [Firebase](https://firebase.google.com/), and ask Carl to b
 
 ### Setup Local Development
 In order to start developing, the virtual environment needs all necessary dependencies installed, so that your local machine can compile and run the web-app on your localhost.
-1. Activate your virtual environment
+1. Create and activate your virtual environment
    ```
    cd ~/
    virtualenv vip-venv
@@ -114,6 +114,11 @@ Once you've decided on the feature/change to develop -
 I've already briefly described the architecture before, but we use Flask as the web framework and most of the front-end development is still in basic js/HTML/CSS. Most back-end and modular development will occur in python since it offers many packages for image and data analysis. Here's an image of how the modules interact with each other:
 
 <img src="https://puu.sh/zwdgI/b1fe2b12be.png" width="600">
+
+
+Here's how the cloud and database interfaces with the web-application. 
+
+<img src="https://puu.sh/Bn1B8/fd50ac0fd3.png" width="600">
 
 ## Explanation of Code
 Here's an explanation of how the code works (or at least how it works in its current state) - 
