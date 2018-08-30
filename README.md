@@ -98,4 +98,4 @@ I've already briefly described the architecture before, but we use Flask as the 
 ## Explanation of Code
 Here's an explanation of how the code works (or at least how it works in its current state) - 
 
-//TODO
+i haven't done this part yet :)
