@@ -28,8 +28,6 @@ Here are installation/set-up instructions for Mac OS X and other UNIX-based oper
    cd ~/
    pip install virtualenv
    virtualenv vip-venv
-   source ./vip-venv/bin/activate
-   pip install -r IPCrowd/requirements.txt
    ```
    
 ### Github
