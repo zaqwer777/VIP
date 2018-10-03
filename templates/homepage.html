@@ -24,7 +24,7 @@
     </script>
     <script type="text/javascript" src="{{ url_for('static', filename='annotorious/annotorious.min.js') }}"></script>
   </head>
-  {% if user == 'admin' %}
+  {% if user == 'axing6' %}
     <body>
       <h1>Hello {{ user }}</h1>
       <img src="{{ url_for('static', filename='images/flood.jpg') }}" class=annotatable width=600/>
@@ -42,7 +42,7 @@
       <h1>Hello {{ user }}</h1>
       <h4>Bias: {{ bias }}</h4>
       <h4>Points: {{ points }}</h4>
-      {% if user == 'user1' %}
+      {% if user == 'axing6' %}
         <img src="{{ url_for('static', filename='images/flood.jpg') }}" class=annotatable width=600/>
       {% elif user == 'user2' %}
         <img src="{{ url_for('static', filename='images/elephant.jpg') }}" class=annotatable width=600/>
