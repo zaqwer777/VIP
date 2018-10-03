@@ -52,9 +52,9 @@ class CogSciModule(object):
 
     def confirmationBias(self):
         if (self.toggle):
-            self.question = "What evidence do you have which supports this " + self.maxTopic
+            self.question = "What evidence do you have which supports this " + self.maxTopic + "?"
         else:
-            self.question = "What evidence do you have which doesn't support this " + self.maxTopic
+            self.question = "What evidence do you have which doesn't support this " + self.maxTopic + "?"
 
     def anchoringBias(self):
         alternatives = []
